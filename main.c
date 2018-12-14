@@ -6,7 +6,7 @@
 /*   By: dpiven <dpiven@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 18:35:54 by dpiven            #+#    #+#             */
-/*   Updated: 2018/12/13 18:57:18 by dpiven           ###   ########.fr       */
+/*   Updated: 2018/12/14 15:40:56 by olrudenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	***arrdel(char ***str)
 	return (0);
 }
 
-char	***ft_checktetris(char ***tetr, int fd)
+char	***ft_checktetris(char **argv, char ***tetr, int fd)
 {
 	int		i;
 
@@ -81,6 +81,8 @@ char	***ft_checktetris(char ***tetr, int fd)
 			return (arrdel(tetr));
 		tetr[g_x][g_y++] = ft_changehesh(g_line, g_x);
 	}
+	if (!(ft_checksn(fd, argv)))
+		return (NULL);
 	return ((g_z == 4 && ft_cnct(tetr[g_x], 'A' + g_x)) ? tetr : arrdel(tetr));
 }
 
@@ -123,10 +125,10 @@ int		main(int argc, char **argv)
 	{
 		tetr = ft_malloc_tetr();
 		fd = open(argv[1], O_RDONLY);
-		if (!(tetr = ft_checktetris(tetr, fd)))
+		if (!(tetr = ft_checktetris(argv, tetr, fd)))
 		{
 			ft_putendl("error");
-			system("leaks fillit");
+			//system("leaks fillit");
 			return (0);
 		}
 		count_tetr = g_x + 1;
@@ -135,13 +137,12 @@ int		main(int argc, char **argv)
 		lst = (t_lst*)malloc(sizeof(t_lst));
 		lst = ft_cuttetr(tetr, count_tetr, lst);
 		ptr = lst;
-		while (ptr->next)
+		/*while (ptr->next)
 		{
 			printf("w-%d\n", ptr->w);
 			ptr = ptr->next;
-		}
-		close(fd);
+		}*/
 	}
-	system("leaks fillit");
+	//system("leaks fillit");
 	return (0);
 }

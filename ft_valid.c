@@ -13,6 +13,20 @@
 #include "libft/libft.h"
 #include "fillit.h"
 
+int		ft_checksn(int fd, char **argv)
+{
+	int		rb;
+	char	str[BUFF_SIZE];
+
+	close(fd);
+	fd = open(argv[1], O_RDONLY);
+	rb = (read(fd, str, BUFF_SIZE) - 1);
+	close(fd);
+	if (str[rb] == '\n')
+		return (1);
+	return (0);
+}
+
 char	*ft_changehesh(char *line, int x)
 {
 	int i;
