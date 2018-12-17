@@ -6,7 +6,7 @@
 /*   By: dpiven <dpiven@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 09:19:54 by dpiven            #+#    #+#             */
-/*   Updated: 2018/12/06 13:51:50 by dpiven           ###   ########.fr       */
+/*   Updated: 2018/12/17 13:51:13 by dpiven           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,7 @@ int			get_next_line(const int fd, char **line)
 	}
 	if (ft_strlen(temp) > 0 && ft_strchr(temp, '\0'))
 	{
-		*line = ft_strdup(temp);
-		ptr->content = NULL;
-		free(temp);
-		return (1);
+		return (2);
 	}
 	ptr->content = NULL;
 	free(temp);

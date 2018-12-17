@@ -6,26 +6,12 @@
 /*   By: dpiven <dpiven@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:30:10 by dpiven            #+#    #+#             */
-/*   Updated: 2018/12/13 18:18:07 by dpiven           ###   ########.fr       */
+/*   Updated: 2018/12/17 13:52:47 by dpiven           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "fillit.h"
-
-int		ft_checksn(int fd, char **argv)
-{
-	int		rb;
-	char	str[BUFF_SIZE];
-
-	close(fd);
-	fd = open(argv[1], O_RDONLY);
-	rb = (read(fd, str, BUFF_SIZE) - 1);
-	close(fd);
-	if (str[rb] == '\n')
-		return (1);
-	return (0);
-}
 
 char	*ft_changehesh(char *line, int x)
 {

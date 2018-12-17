@@ -6,7 +6,7 @@
 /*   By: dpiven <dpiven@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:16:21 by dpiven            #+#    #+#             */
-/*   Updated: 2018/12/14 15:38:03 by olrudenk         ###   ########.fr       */
+/*   Updated: 2018/12/17 17:33:27 by dpiven           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char				*ft_strduplastchr(const char *s1, char c);
 int					ft_checkline(char *str);
 int					ft_checkcolumn(char **str, int y);
 t_lst				*ft_filllst(char ***tetr, int i, t_lst *tmp);
-int					ft_checksn(int fd, char **argv);
-void				**ft_createmtrx(int nb, t_lst *lst);
+char				**ft_createmtrx(int nb);
+char				**ft_solve(char **mtrx, t_lst *lst, int nb);
 
 #endif
