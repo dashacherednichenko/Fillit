@@ -6,7 +6,7 @@
 /*   By: dpiven <dpiven@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:16:21 by dpiven            #+#    #+#             */
-/*   Updated: 2018/12/17 17:33:27 by dpiven           ###   ########.fr       */
+/*   Updated: 2018/12/19 15:36:31 by dpiven           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ int					ft_checkline(char *str);
 int					ft_checkcolumn(char **str, int y);
 t_lst				*ft_filllst(char ***tetr, int i, t_lst *tmp);
 char				**ft_createmtrx(int nb);
-char				**ft_solve(char **mtrx, t_lst *lst, int nb);
+char				**ft_solve(char **mtrx, t_lst *lst, int nb, int i, int j, t_lst *ptr);
 
 #endif

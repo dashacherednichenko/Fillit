@@ -6,7 +6,7 @@
 /*   By: olrudenk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 13:12:47 by olrudenk          #+#    #+#             */
-/*   Updated: 2018/12/17 19:43:49 by dpiven           ###   ########.fr       */
+/*   Updated: 2018/12/19 19:55:57 by dpiven           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ int ft_checkfig(char **s, t_lst *lst, int i, int j, int nb)
 				jj++;
 				y++;
 			}
+//			else if (lst->str[x][y] == '.')
+//			{
+//				y++;
+//			}
 		}
 		i++;
 	}
@@ -70,88 +74,149 @@ char	**ft_delfig(char **mtrx, t_lst *lst)
 	while (z < 4)
 	{
 		mtrx[lst->crd[z].x][lst->crd[z].y] = '.';
-		printf("%d-",lst->crd[z].x);
-		printf("%d\n",lst->crd[z].y);
+//		printf("%d-",lst->crd[z].x);
+//		printf("%d\n",lst->crd[z].y);
 		z++;
 	}
 	return (mtrx);
 }
 
-char	**ft_solve(char **mtrx, t_lst *lst, int nb)
+t_lst	*ft_searchl(t_lst *list, char a)
 {
-	int i;
-	int j;
+	t_lst *ptr;
+
+	ptr = list;
+	while (ptr)
+	{
+		if (ptr->a == a)
+			return (ptr);
+		else
+			ptr = ptr->next;
+	}
+	return (0);
+}
+
+
+t_lst	*ft_locate(char **mtrx, t_lst *ptr, int i, int j)
+{
 	int x;
 	int y;
-	t_lst *ptr;
-	int jj;
-	int ii;
 	int z;
-	t_lst *tmp;
+	int jj;
 
-	i = 0;
-	ptr = lst;
-	tmp = ptr;
+	x = 0;
+	z = 0;
+	while (x < ptr->h && mtrx[i][j] && ptr->next)
+	{
+		y = 0;
+		jj = j;
+		while(ptr->str[x][y] && mtrx[i][jj])
+		{
+			if (mtrx[i][jj] == '.' && ptr->str[x][y] != '.')
+			{
+				mtrx[i][jj] = ptr->str[x][y];
+				ptr->crd[z].x = i;
+				ptr->crd[z++].y = jj;
+//				y++;
+//				jj++;
+			}
+//			if (mtrx[i][jj] == '.' && ptr->str[x][y] == '.')
+//			{
+//				y++;
+//			}
+			y++;
+			jj++;
+		}
+		x++;
+		i++;
+	}
+	return (ptr);
+}
+
+char	**ft_solve(char **mtrx, t_lst *lst, int nb, int i, int j, t_lst *ptr)
+{
+	t_lst	*tmp;
+	int z;
+	int t;
+
+	z = 0;
+	if (!ptr)
+		ptr = lst;
+	if (ptr->a > 'A')
+		tmp = ft_searchl(lst, ptr->a - 1);
 	while (i < nb)
 	{
-		j = 0;
 		while (mtrx[i][j] && ptr->next)
 		{
-			z = 0;
-			if (mtrx[i][j] == '.' && ft_checkfig(mtrx, ptr, i, j, nb) == 1 && ptr->next)
+//			if (mtrx[i][j] == '.' && ft_checkfig(mtrx, ptr, i, j, nb) == 1)
+			if ((z = ft_checkfig(mtrx, ptr, i, j, nb)) == 1)
 			{
-				x = 0;
-				while (x < ptr->h && mtrx[i][j] && ptr->next)
-				{
-					y = 0;
-					jj = j;
-					while(ptr->str[x][y] && mtrx[i][jj] && ptr->next)
-					{
-						if (mtrx[i][jj] == '.' && ptr->str[x][y] != '.')
-						{
-							mtrx[i][jj] = ptr->str[x][y];
-							ptr->crd[z].x = i;
-							ptr->crd[z++].y = jj;
-						}
-						y++;
-						jj++;
-					}
-					x++;
-					i++;
-				}
-				printf("%d-", ptr->crd[0].x);
-				printf("%d\n", ptr->crd[0].y);
-				printf("%d-", ptr->crd[1].x);
-                printf("%d\n", ptr->crd[1].y);
-				printf("%d-", ptr->crd[2].x);
-                printf("%d\n", ptr->crd[2].y);
-				printf("%d-", ptr->crd[3].x);
-				printf("%d\n", ptr->crd[3].y);
+//				printf("\n%d %d %c\n", i, j, ptr->a); 
+				ptr = ft_locate(mtrx, ptr, i, j);
+				t = 0;
+//				while (t < nb)
+//					ft_putendl(mtrx[t++]);
 				tmp = ptr;
+				//			tmp = ptr->next;
 				ptr = ptr->next;
+//	printf("LOC-%c\n", ptr->a);
 				i = 0;
 				j = -1;
 			}
-			else if (i == 0 && j == 0 && mtrx[i][j] == '.' && ft_checkfig(mtrx, ptr, i, j, nb) == -1 && ptr->a \
-                == 'A')
-			{
-				nb++;
-				mtrx = ft_createmtrx(nb);
-				mtrx = ft_solve(mtrx, ptr, nb);
-				return (mtrx);
-				ii = 0;
-				tmp = ptr;
-				ptr = ptr->next;
-			}
+//			else if (mtrx[i][j] == '.' && ft_checkfig(mtrx, ptr, i, j, nb) == -1 && ptr->a == 'A')
+//			{
+//				printf("%d - %d\n", i, j);
+//				nb++;
+//				mtrx = ft_createmtrx(nb);
+//				mtrx = ft_solve(mtrx, lst, nb, 0, 0, ptr);
+//				return (mtrx);
+//			}
 			j++;
 		}
-//		ft_putendl(mtrx[i]);
+		j = 0;
 		i++;
 	}
+	if (z == -1 && ptr->a == 'A')
+	{
+//              printf("%d - %d\n", i, j);
+		nb++;
+		mtrx = ft_createmtrx(nb);
+		mtrx = ft_solve(mtrx, lst, nb, 0, 0, ptr);
+		return (mtrx);
+	}
+//	i = 0;
 	if (ptr->next)
 	{
-		printf("%c\n", tmp->a);
+//		printf("#####%d\n", tmp->crd[0].y);
 		mtrx = ft_delfig(mtrx, tmp);
+		if (tmp->crd[0].y < nb - 1)
+		{
+
+//			printf("??%c\n", tmp->str[0][0]);
+			if (tmp->str[0][0] == '.' && tmp->str[0][1] != '.')
+			{
+				j = tmp->crd[0].y;
+//				printf("!!!!!!!!!!!!!!!!!!!!!!%d\n", tmp->crd[0].y);
+			}
+			else if (tmp->str[0][0] == '.' && tmp->str[0][1] == '.')
+            {
+                j = tmp->crd[0].y - 1;
+//              printf("!!!!!!!!!!!!!!!!!!!!!!%d\n", tmp->crd[0].y);
+            }
+			else
+				j = tmp->crd[0].y + 1;
+			i = tmp->crd[0].x;
+		}
+		else if (tmp->crd[0].y == nb - 1 && tmp->crd[0].x < nb - 1)
+		{
+			j = 0;
+//			if (tmp->str[0][0] == '.')
+//				i = tmp->crd[0].x;
+			//           else
+				i = tmp->crd[0].x + 1;
+		}
+//		printf("%d %d %c\n", i, j, tmp->a);
+		mtrx = ft_solve(mtrx, lst, nb, i, j, tmp);  
 	}
 	return (mtrx);
 }

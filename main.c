@@ -6,7 +6,7 @@
 /*   By: dpiven <dpiven@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 18:35:54 by dpiven            #+#    #+#             */
-/*   Updated: 2018/12/17 18:49:55 by dpiven           ###   ########.fr       */
+/*   Updated: 2018/12/19 17:35:17 by dpiven           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,9 @@ int		main(int argc, char **argv)
 	int		fd;
 	int		count_tetr;
 	t_lst	*lst;
-	t_lst	*ptr;
 	char **mtrx;
 	int i;
+	int j;
 	int nb;
 
 	g_x = 0;
@@ -135,30 +135,14 @@ int		main(int argc, char **argv)
 			return (0);
 		}
 		count_tetr = g_x + 1;
-		printf("TETRIMINOS-%d\n", count_tetr);
 		nb = ft_minsquare(count_tetr);
-		printf("SQUARE-%d\n", nb);
 		lst = (t_lst*)malloc(sizeof(t_lst));
 		lst = ft_cuttetr(tetr, count_tetr, lst);
-		ptr = lst;
-		while (ptr->next)
-		{
-//			i = 0;
-			printf("w-%d\n", ptr->w);
-//			while(i < ptr->h)
-//			{
-//				ft_putendl(ptr->str[i++]);
-//			}
-			ptr = ptr->next;
-		}
-		mtrx = ft_solve(ft_createmtrx(nb), lst, nb);
 		i = 0;
-		while (i < nb)
-		{
-//			ft_putnbr(nb);
-			ft_putendl(mtrx[i]);
-			i++;
-		}
+		j = 0;
+		mtrx = ft_solve(ft_createmtrx(nb), lst, nb, i, j, lst);
+		while (mtrx[i][j])
+			ft_putendl(mtrx[j++]);
 		close(fd);
 	}
 //	system("leaks fillit");
