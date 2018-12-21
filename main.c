@@ -15,9 +15,9 @@
 #include "fillit.h"
 
 char	*g_line;
-int		g_x;
-int		g_y;
-int		g_z;
+int		g_x = 0;
+int		g_y = 0;
+int		g_z = 0;
 
 int		ft_jumptetr(int fd, char **str)
 {
@@ -101,8 +101,7 @@ t_lst	*ft_cuttetr(char ***tetr, int count, t_lst *lst)
 		tmp->a = 'A' + i;
 		tmp->w = 0;
 		tmp->next = NULL;
-		if (!(tmp->str = (char**)malloc(sizeof(char*) * h)))
-			return (0);
+		tmp->str = (char**)malloc(sizeof(char*) * h);
 		tmp = ft_filllst(tetr, i, tmp);
 	}
 	return (lst);
@@ -114,16 +113,9 @@ int		main(int argc, char **argv)
 	int		fd;
 	int		count_tetr;
 	t_lst	*lst;
-	char **mtrx;
-	int i;
-	int j;
-	int nb;
 
-	g_x = 0;
-	g_y = 0;
-	g_z = 0;
 	if (argc != 2)
-		ft_putendl("usage: ./fillit input_file\0");
+		ft_putendl("usage: ./fillit source_file");
 	else
 	{
 		tetr = ft_malloc_tetr();
@@ -131,20 +123,14 @@ int		main(int argc, char **argv)
 		if (!(tetr = ft_checktetris(tetr, fd)))
 		{
 			ft_putendl("error");
-//			system("leaks fillit");
 			return (0);
 		}
 		count_tetr = g_x + 1;
-		nb = ft_minsquare(count_tetr);
 		lst = (t_lst*)malloc(sizeof(t_lst));
 		lst = ft_cuttetr(tetr, count_tetr, lst);
-		i = 0;
-		j = 0;
-		mtrx = ft_solve(ft_createmtrx(nb), lst, nb, i, j, lst);
-		while (mtrx[i][j])
-			ft_putendl(mtrx[j++]);
+		ft_printmtrx((ft_solve(ft_createmtrx(ft_minsquare(count_tetr)),
+				lst, ft_minsquare(count_tetr), lst)));
 		close(fd);
 	}
-//	system("leaks fillit");
 	return (0);
 }

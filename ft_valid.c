@@ -51,7 +51,7 @@ int		ft_minsquare(int nb)
 	int n;
 
 	n = nb * 4;
-	while (ft_sqrt(n) == 0)
+	while (!ft_sqrt(n))
 		n++;
 	return (ft_sqrt(n));
 }
@@ -60,16 +60,19 @@ char	***ft_malloc_tetr(void)
 {
 	char	***tetr;
 	int		x;
-	int		y;
 
 	x = -1;
-	if (!(tetr = (char***)malloc(sizeof(char**) * 26)))
-		return (0);
+	tetr = (char***)malloc(sizeof(char**) * 26);
 	while (++x < 26)
-	{
-		y = 0;
-		if (!(tetr[x] = (char**)malloc(sizeof(char*) * 4)))
-			return (0);
-	}
+		tetr[x] = (char**)malloc(sizeof(char*) * 4);
 	return (tetr);
+}
+
+void	ft_printmtrx(char **mtrx)
+{
+	int i;
+
+	i = 0;
+	while (mtrx[i])
+		ft_putendl(mtrx[i++]);
 }

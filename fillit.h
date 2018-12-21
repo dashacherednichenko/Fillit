@@ -40,6 +40,8 @@ int					ft_checkline(char *str);
 int					ft_checkcolumn(char **str, int y);
 t_lst				*ft_filllst(char ***tetr, int i, t_lst *tmp);
 char				**ft_createmtrx(int nb);
-char				**ft_solve(char **mtrx, t_lst *lst, int nb, int i, int j, t_lst *ptr);
+char				**ft_solve(char **mtrx, t_lst *lst, int nb, t_lst *ptr);
+void				ft_printmtrx(char **mtrx);
+void				ft_plus(t_lst *tmp, int nb, int *i, int *j);
 
 #endif

@@ -53,13 +53,12 @@ char	*ft_strduplastchr(const char *s1, char c)
 	while (s1[i] != c && s1[i])
 		i++;
 	len = i;
-	if (!(s2 = (char *)malloc(sizeof(char) * (len + 1))))
-		return (0);
+	s2 = (char *)malloc(sizeof(char) * (len + 1));
 	i = 0;
 	ii = 0;
 	while (i < len)
 		s2[ii++] = s1[i++];
-	s2[ii] = '\0';
+	s2[ii] = 0;
 	return (s2);
 }
 
