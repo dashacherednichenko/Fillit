@@ -6,7 +6,7 @@
 /*   By: olrudenk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 19:12:00 by olrudenk          #+#    #+#             */
-/*   Updated: 2018/12/21 19:12:08 by olrudenk         ###   ########.fr       */
+/*   Updated: 2018/12/23 16:35:18 by dpiven           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,20 @@ void	ft_plus(t_lst *tmp, int nb, int *i, int *j)
 		*j = 0;
 		*i = tmp->crd[0].x + 1;
 	}
+}
+
+void	ft_mtrxdel(char **mtrx)
+{
+	int i;
+
+	i = 0;
+	while (mtrx[0][i])
+		free(mtrx[i++]);
+	free(mtrx);
+}
+
+void	ft_nulij(int *i, int *j)
+{
+	*i = 0;
+	*j = 0;
 }

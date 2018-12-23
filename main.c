@@ -6,7 +6,7 @@
 /*   By: dpiven <dpiven@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 18:35:54 by dpiven            #+#    #+#             */
-/*   Updated: 2018/12/19 17:35:17 by dpiven           ###   ########.fr       */
+/*   Updated: 2018/12/23 16:33:50 by dpiven           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,5 +132,6 @@ int		main(int argc, char **argv)
 				lst, ft_minsquare(count_tetr), lst)));
 		close(fd);
 	}
+//	system ("leaks fillit");
 	return (0);
 }

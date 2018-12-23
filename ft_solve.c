@@ -6,7 +6,7 @@
 /*   By: olrudenk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 13:12:47 by olrudenk          #+#    #+#             */
-/*   Updated: 2018/12/19 19:55:57 by dpiven           ###   ########.fr       */
+/*   Updated: 2018/12/23 16:34:48 by dpiven           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,39 +101,24 @@ char	**ft_solve(char **mtrx, t_lst *lst, int nb, t_lst *ptr)
 	int			z;
 	t_lst		*tmp;
 
-	z = 0;
-	if (!ptr)
-		ptr = lst;
-	if (ptr->a > 'A')
-		tmp = ft_searchl(lst, ptr->a - 1);
+	(ptr->a > 'A') ? (tmp = ft_searchl(lst, ptr->a - 1)) : 0;
 	while (i < nb)
 	{
 		while (mtrx[i][j] && ptr->next)
-		{
-			if ((z = ft_checkfig(mtrx, ptr, i, j)) == 1)
+			if ((z = ft_checkfig(mtrx, ptr, i, j++)) == 1)
 			{
-				ptr = ft_locate(mtrx, ptr, i, j);
+				ptr = ft_locate(mtrx, ptr, i, j - 1);
 				tmp = ptr;
 				ptr = ptr->next;
-				i = 0;
-				j = -1;
+				ft_nulij(&i, &j);
 			}
-			j++;
-		}
 		j = 0;
 		i++;
 	}
+	(z == -1 && ptr->a == 'A') ? ft_nulij(&i, &j) : i;
 	if (z == -1 && ptr->a == 'A' && nb++)
-	{
-		i = 0;
-		j = 0;
-		mtrx = ft_solve(ft_createmtrx(nb), lst, nb, ptr);
-		return (mtrx);
-	}
-	if (ptr->next)
-	{
-		ft_plus(tmp, nb, &i, &j);
-		mtrx = ft_solve(ft_delfig(mtrx, tmp), lst, nb, tmp);
-	}
+		return (mtrx = ft_solve(ft_createmtrx(nb), lst, nb, ptr));
+	ptr->next ? ft_plus(tmp, nb, &i, &j) : 0;
+	ptr->next ? (mtrx = ft_solve(ft_delfig(mtrx, tmp), lst, nb, tmp)) : 0;
 	return (mtrx);
 }

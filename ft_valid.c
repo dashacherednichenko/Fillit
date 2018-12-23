@@ -6,7 +6,7 @@
 /*   By: dpiven <dpiven@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:30:10 by dpiven            #+#    #+#             */
-/*   Updated: 2018/12/17 13:52:47 by dpiven           ###   ########.fr       */
+/*   Updated: 2018/12/23 16:30:12 by dpiven           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,11 @@ char	***ft_malloc_tetr(void)
 void	ft_printmtrx(char **mtrx)
 {
 	int i;
+	int j;
 
 	i = 0;
-	while (mtrx[i])
-		ft_putendl(mtrx[i++]);
+	j = 0;
+	while (mtrx[i][j])
+		ft_putendl(mtrx[j++]);
+	ft_mtrxdel(mtrx);
 }

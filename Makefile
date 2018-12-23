@@ -6,7 +6,7 @@
 #    By: dpiven <dpiven@student.unit.ua>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/26 15:28:53 by dpiven            #+#    #+#              #
-#    Updated: 2018/12/21 19:12:37 by olrudenk         ###   ########.fr        #
+#    Updated: 2018/12/23 15:46:29 by dpiven           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -28,6 +28,8 @@ clean:
 fclean: clean
 	@$(LIB) fclean
 	@rm -f $(NAME)
+	@rm -f *.c~
+	@rm -f *~
 
 re: fclean all
 
