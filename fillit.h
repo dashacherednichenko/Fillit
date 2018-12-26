@@ -6,7 +6,7 @@
 /*   By: dpiven <dpiven@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:16:21 by dpiven            #+#    #+#             */
-/*   Updated: 2018/12/23 16:29:19 by dpiven           ###   ########.fr       */
+/*   Updated: 2018/12/26 17:31:39 by olrudenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ char				**ft_createmtrx(int nb);
 char				**ft_solve(char **mtrx, t_lst *lst, int nb, t_lst *ptr);
 void				ft_printmtrx(char **mtrx);
 void				ft_plus(t_lst *tmp, int nb, int *i, int *j);
-void				ft_mtrxdel(char **mtrx);
 void				ft_nulij(int *i, int *j);
 
 #endif

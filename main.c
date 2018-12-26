@@ -6,11 +6,10 @@
 /*   By: dpiven <dpiven@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 18:35:54 by dpiven            #+#    #+#             */
-/*   Updated: 2018/12/23 16:33:50 by dpiven           ###   ########.fr       */
+/*   Updated: 2018/12/26 17:31:13 by olrudenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft/libft.h"
 #include "fillit.h"
 
@@ -65,10 +64,10 @@ char	***ft_checktetris(char ***tetr, int fd)
 
 	while (get_next_line(fd, &g_line) == 1)
 	{
-		if (g_line[0] == '\0' && g_y == 4)
+		if (g_line[0] == '\0' && g_y == 4 && g_x < 25)
 			if (!(ft_jumptetr(fd, tetr[g_x])))
 				return (arrdel(tetr));
-		if ((g_line[0] == '\0' && g_y != 4) || g_y >= 4)
+		if ((g_line[0] == '\0' && g_y != 4) || g_y >= 4 || g_x >= 26)
 			return (arrdel(tetr));
 		i = -1;
 		while (g_line[++i])
@@ -132,6 +131,5 @@ int		main(int argc, char **argv)
 				lst, ft_minsquare(count_tetr), lst)));
 		close(fd);
 	}
-//	system ("leaks fillit");
 	return (0);
 }
