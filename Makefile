@@ -6,13 +6,18 @@
 #    By: dpiven <dpiven@student.unit.ua>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/26 15:28:53 by dpiven            #+#    #+#              #
-#    Updated: 2018/12/26 17:31:24 by olrudenk         ###   ########.fr        #
+#    Updated: 2019/03/20 13:45:56 by olrudenk         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = fillit
 
-SRC = ft_calc_copy.c ft_list.c ft_solve.c ft_valid.c ft_fillit.c main.c
+SRC = ./srcs/ft_calc_copy.c \
+	  ./srcs/ft_list.c \
+	  ./srcs/ft_solve.c \
+	  ./srcs/ft_valid.c \
+	  ./srcs/ft_fillit.c \
+	  ./srcs/main.c \
 
 LIB = @make -C libft/
 

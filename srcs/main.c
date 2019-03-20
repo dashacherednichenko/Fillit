@@ -6,12 +6,12 @@
 /*   By: dpiven <dpiven@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 18:35:54 by dpiven            #+#    #+#             */
-/*   Updated: 2018/12/26 17:31:13 by olrudenk         ###   ########.fr       */
+/*   Updated: 2019/03/20 13:47:52 by olrudenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "fillit.h"
+#include "../libft/libft.h"
+#include "../inc/fillit.h"
 
 char	*g_line;
 int		g_x = 0;

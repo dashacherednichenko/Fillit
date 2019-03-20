@@ -6,12 +6,12 @@
 /*   By: olrudenk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 19:12:00 by olrudenk          #+#    #+#             */
-/*   Updated: 2018/12/25 14:24:05 by dpiven           ###   ########.fr       */
+/*   Updated: 2019/03/20 13:46:41 by olrudenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include "fillit.h"
+#include "../libft/libft.h"
+#include "../inc/fillit.h"
 
 char	**ft_createmtrx(int nb)
 {

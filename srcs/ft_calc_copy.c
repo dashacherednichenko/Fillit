@@ -6,12 +6,12 @@
 /*   By: dpiven <dpiven@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 17:46:35 by dpiven            #+#    #+#             */
-/*   Updated: 2018/12/26 17:31:36 by olrudenk         ###   ########.fr       */
+/*   Updated: 2019/03/20 13:46:28 by olrudenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "fillit.h"
+#include "../libft/libft.h"
+#include "../inc/fillit.h"
 
 int		ft_calcheight(char **str, char a)
 {

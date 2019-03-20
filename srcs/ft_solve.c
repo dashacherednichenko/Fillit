@@ -6,12 +6,12 @@
 /*   By: olrudenk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 13:12:47 by olrudenk          #+#    #+#             */
-/*   Updated: 2018/12/26 17:31:56 by olrudenk         ###   ########.fr       */
+/*   Updated: 2019/03/20 13:47:09 by olrudenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include "fillit.h"
+#include "../libft/libft.h"
+#include "../inc/fillit.h"
 
 int		ft_checkfig(char **s, t_lst *lst, int i, int j)
 {

@@ -6,12 +6,12 @@
 /*   By: dpiven <dpiven@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 18:55:30 by dpiven            #+#    #+#             */
-/*   Updated: 2018/12/26 17:31:52 by olrudenk         ###   ########.fr       */
+/*   Updated: 2019/03/20 13:46:56 by olrudenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "fillit.h"
+#include "../libft/libft.h"
+#include "../inc/fillit.h"
 
 t_lst	*ft_filllst(char ***tetr, int i, t_lst *tmp)
 {

@@ -6,12 +6,12 @@
 /*   By: dpiven <dpiven@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:30:10 by dpiven            #+#    #+#             */
-/*   Updated: 2018/12/26 17:32:00 by olrudenk         ###   ########.fr       */
+/*   Updated: 2019/03/20 13:47:20 by olrudenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "fillit.h"
+#include "../libft/libft.h"
+#include "../inc/fillit.h"
 
 char	*ft_changehesh(char *line, int x)
 {
