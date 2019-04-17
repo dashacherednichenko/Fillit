@@ -1,4 +1,4 @@
-# Fillit
+# Fillit [100/100]
 In this pair project at UNIT Factory (School 42)
 
 we must have created programm that puts together all 
